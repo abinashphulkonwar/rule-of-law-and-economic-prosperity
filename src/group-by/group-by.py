@@ -10,4 +10,6 @@ df_sorted = df.sort_values(by=["countryname", "year"], ascending=[True, True])
 
 df_sorted.reset_index(drop=True, inplace=True)
 df_sorted= df_sorted[df_sorted["indicator"] == "rl"]
-df.to_csv("./rl.csv", index=False)
+df_sorted.reset_index(drop=True, inplace=True)
+
+df_sorted.to_csv("./rl.csv", index=False)
