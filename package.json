@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "csv-parser": "^3.2.0"
+    "csv-parser": "^3.2.0",
+    "json-2-csv": "^5.5.9"
   },
   "devDependencies": {
     "@types/node": "^22.13.14"
