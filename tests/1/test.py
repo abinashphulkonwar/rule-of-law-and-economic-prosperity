@@ -25,7 +25,7 @@ model = sm.OLS(y, X).fit(cov_type='HC3')
 
 
 # Save the summary to a text file
-with open("results.md", "w") as f:
+with open("results.txt", "w") as f:
     f.write(model.summary().as_text())
 summary_df = pd.DataFrame(model.summary().tables[1].data[1:], columns=model.summary().tables[1].data[0])
 summary_df.to_csv("results.csv", index=False)
