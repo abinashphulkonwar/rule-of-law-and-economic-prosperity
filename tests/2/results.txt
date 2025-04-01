@@ -4,7 +4,7 @@ Dep. Variable:          log_percapita   R-squared:                       0.666
 Model:                            OLS   Adj. R-squared:                  0.664
 Method:                 Least Squares   F-statistic:                     503.6
 Date:                Mon, 31 Mar 2025   Prob (F-statistic):               0.00
-Time:                        19:27:53   Log-Likelihood:                -5799.0
+Time:                        19:56:14   Log-Likelihood:                -5799.0
 No. Observations:                4394   AIC:                         1.165e+04
 Df Residuals:                    4368   BIC:                         1.182e+04
 Df Model:                          25                                         
