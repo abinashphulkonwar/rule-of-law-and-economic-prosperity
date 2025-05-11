@@ -1,0 +1,30 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          log_percapita   R-squared:                       0.709
+Model:                            OLS   Adj. R-squared:                  0.707
+Method:                 Least Squares   F-statistic:                     314.1
+Date:                Mon, 21 Apr 2025   Prob (F-statistic):          4.93e-190
+Time:                        20:57:25   Log-Likelihood:                -787.46
+No. Observations:                 670   AIC:                             1589.
+Df Residuals:                     663   BIC:                             1620.
+Df Model:                           6                                         
+Covariance Type:                  HC3                                         
+==================================================================================
+                     coef    std err          z      P>|z|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          8.3892      0.080    104.243      0.000       8.231       8.547
+estimate           1.1244      0.031     36.045      0.000       1.063       1.185
+trade_openness     0.3755      0.050      7.470      0.000       0.277       0.474
+year_2016          0.0162      0.096      0.170      0.865      -0.171       0.203
+year_2017          0.0739      0.098      0.757      0.449      -0.118       0.266
+year_2018          0.1175      0.097      1.213      0.225      -0.072       0.307
+year_2019          0.1137      0.097      1.174      0.240      -0.076       0.303
+==============================================================================
+Omnibus:                        0.577   Durbin-Watson:                   2.078
+Prob(Omnibus):                  0.749   Jarque-Bera (JB):                0.523
+Skew:                          -0.068   Prob(JB):                        0.770
+Kurtosis:                       3.016   Cond. No.                         7.81
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)

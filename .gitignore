@@ -2,3 +2,4 @@
 wgidataset_excel
 node_modules
 *.zip
+tests/5/*.png
