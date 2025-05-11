@@ -24,6 +24,7 @@ interface rlWithPerCapitaWithGPD_EX_IM extends rl {
   gdp: string;
   exports: string;
   imports: string;
+  [key: string]: string;
 }
 interface pci {
   "1990": string;
@@ -350,6 +351,29 @@ const merge = () => {
       }
     });
 
+  const exter_variables = [
+    "Gross capital formation (% of GDP)",
+    "Foreign direct investment, net inflows (BoP, current US$)",
+    "Population, total",
+  ];
+
+  exter_variables.map((serise_name) => {
+    wdi
+      .filter((val) => {
+        if ([serise_name].includes(val?.["Series Name"])) return true;
+      })
+      .forEach((val) => {
+        const data = WDI.get(val["Country Code"]);
+        if (!data) return;
+        for (let year = 2001; year <= 2023; year++) {
+          const valueKey = `${year} [YR${year}]`;
+          const key = `${serise_name}_${year}`;
+          // @ts-ignore
+          data[key] = val[valueKey];
+        }
+      });
+  });
+
   rl.forEach((rlItem) => {
     const pciItem = pci.find(
       (pciItem) => pciItem["Country Code"] === rlItem.code
@@ -373,10 +397,13 @@ const merge = () => {
   );
   console.log("data not found for: ", dataNotFound.size);
   const processedData: rlWithPerCapitaWithGPD_EX_IM[] = [];
+
   rlWithPerCapita.map((val) => {
     if (parseInt(val.year) < 2001) return;
     const data = WDI.get(val.code);
+
     if (!data) return;
+
     if (
       // @ts-ignore
       data[`gdp_${val.year}`] &&
@@ -385,7 +412,7 @@ const merge = () => {
       // @ts-ignore
       data[`import_${val.year}`]
     ) {
-      processedData.push({
+      const temp = {
         ...val,
         // @ts-ignore
         gdp: data[`gdp_${val.year}`],
@@ -393,7 +420,15 @@ const merge = () => {
         exports: data[`export_${val.year}`],
         // @ts-ignore
         imports: data[`export_${val.year}`],
+      };
+      exter_variables.map((col) => {
+        // @ts-ignore
+        if (data[`${col}_${val.year}`] != "..") {
+          // @ts-ignore
+          temp[col] = data[`${col}_${val.year}`];
+        }
       });
+      processedData.push(temp);
     }
   });
   fs.writeFileSync(
