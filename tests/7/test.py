@@ -20,7 +20,7 @@ dummy_cols = ' + '.join(df_dummies.columns[df_dummies.columns.str.startswith('ye
 country_dummy_cols = ' + '.join(df_dummies.columns[df_dummies.columns.str.startswith('code_')])
 
 
-equation = f'log_percapita ~ estimate + trade_openness + gross_capital_formation_of_gdp + log_fdi + {dummy_cols} '
+equation = f'log_percapita ~ estimate + trade_openness + gross_capital_formation_of_gdp + log_fdi +  {country_dummy_cols}  + {dummy_cols} '
 
 
 y, X = dmatrices(equation, data=df_dummies, return_type='dataframe')
