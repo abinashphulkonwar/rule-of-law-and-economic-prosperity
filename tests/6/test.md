@@ -1,11 +1,11 @@
-## Experimental Equation: Rule of Law & Economic Prosperity with Trade Openness as Control Variable
+## Experimental Equation: Rule of Law & Economic Prosperity with Trade Openness and state fixed effect as Control Variable
 
 ```Math
 trade openness = (exports + imports) / GDP
 ```
 
 ```Math
-ln(percapita) = β0 + β1 ⋅ RuleOfLaw + trade openness + β2 ⋅ Year + ε
+ln(percapita) = β0 + β1 ⋅ RuleOfLaw + trade openness + β2 ⋅ Year + β3 . State + ε
 ```
 
 Where:
@@ -14,6 +14,7 @@ Where:
 - `β0` = Intercept term.
 - `β1` = Coefficient of **Rule of Law** (independent variable).
 - `β2` = Coefficient of **Years** dummy variables
+- `β3` = Coefficient of **State** dummy variables
 - `ε` = Error term (captures unobserved factors).
 
 ### Interpretation:
