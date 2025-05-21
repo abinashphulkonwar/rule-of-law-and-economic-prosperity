@@ -13,7 +13,12 @@ df = pd.read_csv("./rl-pci-control.csv")
 
 df['log_percapita'] = np.log(df['per capita'])
 df["trade_openness"] = (df["exports"] + df["imports"]) / df["gdp"]
-df["log_fdi"] = np.where(df["Foreign direct investment, net inflows (BoP, current US$)"] == 0, 1,  np.log(df["Foreign direct investment, net inflows (BoP, current US$)"]))
+df["fdi_nonzero"] = np.where(
+    df["Foreign direct investment, net inflows (BoP, current US$)"] == 0,
+    1,
+    df["Foreign direct investment, net inflows (BoP, current US$)"]
+)
+df["log_fdi"] =  np.log(df["fdi_nonzero"])
 df_dummies_years = pd.get_dummies(df, columns=['year'], prefix='year', drop_first=True)  
 df_dummies = pd.get_dummies(df_dummies_years, columns=["code"], prefix="code", drop_first=True)
 dummy_cols = ' + '.join(df_dummies.columns[df_dummies.columns.str.startswith('year_')])
